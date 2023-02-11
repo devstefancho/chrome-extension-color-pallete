@@ -1,0 +1,26 @@
+{
+  "name": "chrome-extension-color-pallete",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build && tsc --outDir \"./dist/scripts\" src/content.ts",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devstefancho/chrome-extension-color-pallete.git"
+  },
+  "keywords": [],
+  "author": "devstefancho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devstefancho/chrome-extension-color-pallete/issues"
+  },
+  "homepage": "https://github.com/devstefancho/chrome-extension-color-pallete#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1"
+  }
+}
