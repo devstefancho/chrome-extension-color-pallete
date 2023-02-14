@@ -5,6 +5,17 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btn) {
     btn.addEventListener("click", () => {
       console.log("hello button");
+      new window.EyeDropper()
+        .open()
+        .then(({ sRGBHex }: { sRGBHex: string }) => {
+          console.log("print result...");
+          console.log(sRGBHex);
+          navigator.clipboard.writeText(sRGBHex);
+          const colorCodes = document.getElementById("selected-color-code");
+          const code = document.createElement("div");
+          code.innerText = sRGBHex;
+          colorCodes?.appendChild(code);
+        });
     });
   }
 });
