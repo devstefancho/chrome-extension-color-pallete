@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const colorCodes = document.getElementById("selected-color-code");
           const code = document.createElement("div");
           code.innerText = `${sRGBHex} (hsl : ${util.RGBToHSL(sRGBHex)})`;
+          code.style.color = sRGBHex;
           colorCodes?.appendChild(code);
         });
     });
