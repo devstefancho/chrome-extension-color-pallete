@@ -4,10 +4,16 @@
     <meta charset="UTF-8" />
     <title></title>
     <script type="module" src="src/popup.ts"></script>
+    <style>
+    .selected-color-code {
+      padding: 8px;
+      width: max-content;
+    }
+    </style>
   </head>
   <body>
     <h1>Hello Extensions<h1>
       <button id="color-picker">🖍 Color Picker</button>
-      <div id="selected-color-code"></div>
+      <div id="selected-color-code" class="selected-color-code"></div>
   </body>
 </html>

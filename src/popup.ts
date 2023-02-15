@@ -1,3 +1,5 @@
+import util from "./utils";
+
 export {};
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -13,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
           navigator.clipboard.writeText(sRGBHex);
           const colorCodes = document.getElementById("selected-color-code");
           const code = document.createElement("div");
-          code.innerText = sRGBHex;
+          code.innerText = `${sRGBHex} (hsl : ${util.RGBToHSL(sRGBHex)})`;
           colorCodes?.appendChild(code);
         });
     });
