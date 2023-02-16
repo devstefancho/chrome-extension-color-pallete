@@ -1,26 +1,43 @@
+import { EyeDropperReturnType } from "./types/eye-dropper";
 import util from "./utils";
 
-export {};
+let pickerBtn;
 
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.querySelector("button");
-  if (btn) {
-    btn.addEventListener("click", () => {
-      console.log("hello button");
-      new window.EyeDropper()
-        .open()
-        .then(({ sRGBHex }: { sRGBHex: string }) => {
-          console.log("print result...");
-          console.log(sRGBHex);
-          navigator.clipboard.writeText(sRGBHex);
-          const colorCodes = document.getElementById("selected-color-code");
-          const code = document.createElement("div");
-          code.innerText = `${sRGBHex} (hsl : ${util.RGBToHSL(sRGBHex)})`;
-          code.style.color = sRGBHex;
-          colorCodes?.appendChild(code);
-        });
-    });
+ready(init);
+
+function ready(fn) {
+  document.addEventListener("DOMContentLoaded", fn);
+  console.log("Started...", document);
+}
+
+function init() {
+  getButton();
+  if (pickerBtn) {
+    pickerBtn.addEventListener("click", openPicker);
   }
-});
+}
 
-console.log("Started...", document);
+function getButton() {
+  pickerBtn = document.querySelector("button");
+}
+
+function openPicker() {
+  new window.EyeDropper()
+    .open()
+    .then((result: EyeDropperReturnType) => pickColor(result.sRGBHex));
+}
+
+function pickColor(sRGBHex: EyeDropperReturnType["sRGBHex"]) {
+  copyToClipboard(sRGBHex);
+
+  // selected color is appended to list
+  const colorCodes = document.getElementById("selected-color-code");
+  const code = document.createElement("div");
+  code.innerText = `${sRGBHex} (hsl : ${util.RGBToHSL(sRGBHex)})`;
+  code.style.color = sRGBHex;
+  colorCodes?.appendChild(code);
+}
+
+function copyToClipboard(text: string) {
+  navigator.clipboard.writeText(text);
+}
