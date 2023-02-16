@@ -1,0 +1,8 @@
+.picker-btn {
+  color: orange;
+}
+
+.selected-color-code {
+  padding: 8px;
+  width: max-content;
+}
